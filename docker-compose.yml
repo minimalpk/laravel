@@ -1,4 +1,5 @@
 version: "3.7"
+
 services:
     app:
         build:
@@ -6,12 +7,13 @@ services:
                 user: developer
             context: ./
             dockerfile: Dockerfile
-        image: laravel
+        image: laravel-app
         container_name: laravel-app
         restart: unless-stopped
         working_dir: /var/www/
         volumes:
             - ./:/var/www
+            - ./docker-compose/php/:/usr/local/etc/php/conf.d/
         networks:
             - laravel
 
